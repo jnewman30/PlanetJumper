@@ -35,11 +35,15 @@ func create_ship() -> void:
 
 func create_planets() -> void:
 	planetSprites = utils.load_sprite_folder("res://sprites/planets", ".png")
-
+	
 	var count = level * 2
 	var i = 0
 	while i < count:
-		var pos = utils.get_random_pos_in_circle(center, 400)
+		# var pos = utils.get_random_pos_in_circle(center, 400)
+		rng.randomize()
+		var pos = Vector2 (
+			rng.randf_range(50, viewSize.x - 50),
+			rng.randf_range(50, viewSize.y - 50))
 		create_planet(pos)
 		i += 1
 
